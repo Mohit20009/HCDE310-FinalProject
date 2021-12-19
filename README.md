@@ -1,1 +1,3 @@
 # HCDE310-FinalProject
+
+Crypto influencers like Elon Musk can often drive up or down the cryptocurrency price from a single tweet.Hence, I decided to create a web application that shows the information on all the cryptocurrencies listed on the Nomics API. When the user clicks on the cryptocurrency name, it takes them to the Twitter search results for that cryptocurrency in a new tab. This reduces one step for users making it more coinvent to follow and explore a particular cryptocurrency discussion on Twitter.

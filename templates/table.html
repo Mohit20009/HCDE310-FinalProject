@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block form %}
+  <h5>{{currency}}</h5>
+  <form action="gresponse" method="get">
+    <label for="fiatname">Use a different fiat currency:</label>
+    <input type="text" id="fiatname" name="fiatname" />
+    <input type="submit" value="Go" name="gobtn"/>
+  </form>
+{% endblock %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th></th>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>1d change</th>
+        <th>Highest</th>
+        <th>Market Cap</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for coin in coins %}
+        <tr>
+          <td>{{ coin.rank }}</td>
+          <td><img src = '{{ coin.logo }}' width='25' height='25'/> </td>
+          <td>
+            <a href="https://twitter.com/search?q={{coin.name}}" target="_blank">
+                {{coin.name}}
+            </a>
+          </td>
+          <td>{{coin.symbol}}</td>
+          <td>{{ coin.price }}</td>
+          <td>{{ coin.str_one_day_change }}</td>
+          <td>{{ coin.all_time_high }}</td>
+          <td>{{ coin.market_cap }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          null,
+          {orderable: false, searchable: false},
+          null,
+          {orderable: false},
+          {searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},],
+      });
+    });
+  </script>
+{% endblock %}
